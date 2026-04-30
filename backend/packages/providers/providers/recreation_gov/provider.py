@@ -47,9 +47,9 @@ class RecreationGovProvider(BaseProvider):
         """
         return RecreationDotGov
 
-    data_source: ClassVar[str] = (
-        "https://ridb.recreation.gov/downloads/RIDBFullExport_V1_JSON.zip"
-    )
+    data_source: ClassVar[
+        str
+    ] = "https://ridb.recreation.gov/downloads/RIDBFullExport_V1_JSON.zip"
     expiration_time: ClassVar[timedelta] = timedelta(hours=12)
     data_files: ClassVar[list[ZippedDataContents]] = [
         ZippedDataContents(

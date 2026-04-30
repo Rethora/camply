@@ -4,12 +4,12 @@ This document defines all environment variables used by the `camply` monorepo. A
 
 ## ⚙️ Core Configuration
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `ENVIRONMENT` | Deployment stage (`local`, `development`, `production`) | `local` |
-| `DEBUG` | Enable debug logs and FastAPI docs | `true` |
-| `DATABASE_URL` | PostgreSQL connection string | `postgresql+psycopg://camply:camply@localhost:5432/camply` |
-| `VALKEY_URL` | Valkey connection string for Celery | `redis://localhost:6379/0` |
+| Variable       | Description                                             | Default                                                    |
+| -------------- | ------------------------------------------------------- | ---------------------------------------------------------- |
+| `ENVIRONMENT`  | Deployment stage (`local`, `development`, `production`) | `local`                                                    |
+| `DEBUG`        | Enable debug logs and FastAPI docs                      | `true`                                                     |
+| `DATABASE_URL` | PostgreSQL connection string                            | `postgresql+psycopg://camply:camply@localhost:5432/camply` |
+| `VALKEY_URL`   | Valkey connection string for Celery                     | `redis://localhost:6379/0`                                 |
 
 ---
 
@@ -18,6 +18,7 @@ This document defines all environment variables used by the `camply` monorepo. A
 `camply` supports two authentication modes.
 
 ### 1. Auth0 Mode (Community/SaaS)
+
 Enabled when `AUTH_MODE=auth0`.
 | Variable | Description |
 |----------|-------------|
@@ -27,6 +28,7 @@ Enabled when `AUTH_MODE=auth0`.
 | `AUTH0_CLIENT_ID` | The Frontend Application Client ID. |
 
 ### 2. Local-Only Mode (Private Self-Hosting)
+
 Enabled when `AUTH_MODE=local`.
 | Variable | Description |
 |----------|-------------|
@@ -38,13 +40,15 @@ Enabled when `AUTH_MODE=local`.
 ## 🔔 Notifications
 
 ### Pushover (MVP)
-| Variable | Description |
-|----------|-------------|
+
+| Variable             | Description                                    |
+| -------------------- | ---------------------------------------------- |
 | `PUSHOVER_APP_TOKEN` | The API Token for your Pushover "Application". |
 
 ### Apprise (Legacy/Future)
-| Variable | Description |
-|----------|-------------|
+
+| Variable       | Description                                      |
+| -------------- | ------------------------------------------------ |
 | `APPRISE_URLS` | Comma-separated list of Apprise-compatible URLs. |
 
 ---
@@ -52,14 +56,16 @@ Enabled when `AUTH_MODE=local`.
 ## 📈 Monitoring & Observability
 
 ### Sentry
-| Variable | Description |
-|----------|-------------|
-| `SENTRY_DSN` | The DSN for error tracking (Optional). |
+
+| Variable                    | Description                                   |
+| --------------------------- | --------------------------------------------- |
+| `SENTRY_DSN`                | The DSN for error tracking (Optional).        |
 | `SENTRY_TRACES_SAMPLE_RATE` | Percentage of traces to capture (0.0 to 1.0). |
 
 ---
 
 ## 🏗️ Docker & Infrastructure
+
 These variables are primarily used in `docker-compose.yaml`.
 | Variable | Description | Default |
 |----------|-------------|---------|
