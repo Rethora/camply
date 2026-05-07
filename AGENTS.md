@@ -54,7 +54,15 @@ This project uses **Spec-Kit** for formal feature definition and task tracking.
 - **Worker**: Smart De-duplicated Poller (Celery + Valkey).
 - **Infrastructure**: Docker & Docker Compose.
 - **API**: OpenAPI with automated TypeScript client generation.
-- **Quality Gates**: `mypy`, `tsc`, `ruff`, `eslint`, `pytest`, `vitest`.
+- **Quality Gates**: `mypy`, `tsc`, `ruff`, `eslint`, `pytest`, `vitest`, `detect-secrets`, `pip-audit`.
+
+## 🚀 CI/CD Infrastructure
+
+The project uses GitHub Actions for automated validation. The `CI` workflow (`.github/workflows/ci.yaml`) runs on every push and PR to the `web` branch, performing:
+
+- **Security**: Gitleaks secret scanning and dependency audits.
+- **Quality**: Linting, formatting, and static type checking.
+- **Verification**: Full test suite execution across the monorepo.
 
 ## 🌳 Working with Git Worktrees
 
@@ -118,6 +126,8 @@ Before creating a PR, agents and contributors must ensure the following:
 - [ ] **Tests Pass**: `task test` completes successfully without errors.
 - [ ] **Type Check Passes**: `task check` returns no type violations.
 - [ ] **Linting Passes**: `task lint` is clean (run `task fix` to resolve auto-fixable issues).
+- [ ] **Secrets Scanned**: `task pre-commit` passes without finding new secrets.
+- [ ] **Lockfiles Synced**: `uv.lock` and `package-lock.json` are up-to-date.
 - [ ] **Architecture Aligned**: Code changes respect the `DESIGN_*.md` blueprints and `.specify/memory/constitution.md`.
 - [ ] **Database Migrations**: If database models were changed, a new Alembic migration was generated and applied (`task backend:migration -- "message"`).
 - [ ] **Documentation Updated**: If any core logic or APIs changed, `docs/agents/` and OpenAPI specifications are updated accordingly.
